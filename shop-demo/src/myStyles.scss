@@ -1,0 +1,84 @@
+// Override default variables before the import
+$body-bg: #FFFFFF;
+$breadcrumb-divider: quote(">");
+$enable-rounded: false;
+$primary: #ffffff;
+$secondary: #F2F2F2;
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+
+.secondary-background{
+    background-color: $secondary;
+}
+
+.smaller-text{
+    font-size: small;
+}
+
+.row{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.btn-link{
+    text-decoration: none;
+    color: black;
+}
+
+.logo-image{
+    height: 3rem;
+}
+
+.flag-image{
+    height: 20px;
+}
+
+.btn-control-outline{
+    border: 1px solid #ced4da;
+    border-left: 1px solid #FFFFFF;
+}
+
+.btn-no-back{ 
+    background-color: transparent;
+    border: none;
+}
+
+.btn-secondary-border{
+    background-color: $secondary;
+    border: 1px solid #d1d1d1;
+}
+
+.btn-primary-border{
+    background-color: $primary;
+    border: 1px solid #d1d1d1;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+.breadcrumb-item{
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active { 
+    text-decoration: none !important;
+}
+
+.footer-row > * {
+    width: inherit;
+}
+
+.card-body{
+    h5{
+        line-height: 24px;
+        overflow: hidden;
+    }
+}
