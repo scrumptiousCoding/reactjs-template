@@ -87,6 +87,7 @@ $secondary: #F2F2F2;
 
 .card{
     border: none;
+    border-radius: 0;
 
     img{
         height: 20rem;
@@ -105,5 +106,5 @@ $secondary: #F2F2F2;
 }
 
 .card:hover{
-    border: $secondary solid 1px;
+    box-shadow: 0px 0px 5px #8d8d8d inset;
 }
