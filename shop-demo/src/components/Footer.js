@@ -7,11 +7,11 @@ const Footer = () => {
             
             <div className="row">
                 <div className="col">
-                    <button type="button" class="btn btn-secondary me-2">Inloggen</button>
-                    <button type="button" class="btn btn-secondary">Registreren</button>
+                    <button type="button" className="btn btn-secondary me-2">Inloggen</button>
+                    <button type="button" className="btn btn-secondary">Registreren</button>
                 </div>
                 <div className="col text-end">
-                    <p className="bold fs-5 mb-0">Meer dan 160.000 kavels per maand</p>
+                    <p className="fw-bold fs-5 mb-0">Meer dan 160.000 kavels per maand</p>
                 </div>
             </div>
 
@@ -22,9 +22,9 @@ const Footer = () => {
                 {footerItems.map((item) => (
                     <div className="col-3" key={item.id}>
                         <h5>{item.description}</h5>
-                        <ul class="nav flex-column">
+                        <ul className="nav flex-column">
                             {item.divisions.map((listItem) => (
-                                <li class="nav-item py-1" key={listItem.id}>{listItem.description}</li>
+                                <li className="nav-item py-1" key={listItem.id}>{listItem.description}</li>
                             ))}
                         </ul>
                     </div>
@@ -33,7 +33,7 @@ const Footer = () => {
 
             <hr />
 
-            <div className="row footer-row justify-content-between">
+            <div className="row footer-row justify-content-between pb-3">
                 <span>Link</span>
                 <span>Link</span>
                 <span>Link</span>

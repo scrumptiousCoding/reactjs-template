@@ -33,7 +33,7 @@ $secondary: #F2F2F2;
 }
 
 .flag-image{
-    height: 20px;
+    height: 20px !important;
 }
 
 .btn-control-outline{
@@ -60,10 +60,6 @@ $secondary: #F2F2F2;
     display: none;
 }
 
-.bold{
-    font-weight: 700;
-}
-
 .breadcrumb-item{
     text-decoration: underline;
 }
@@ -79,6 +75,35 @@ $secondary: #F2F2F2;
 .card-body{
     h5{
         line-height: 24px;
+        white-space: nowrap;
         overflow: hidden;
+        text-overflow: ellipsis;
     }
+    .sub-text {
+        color: #8d8d8d;
+    }
+
+}
+
+.card{
+    border: none;
+
+    img{
+        height: 20rem;
+        object-fit: cover;
+    }
+    
+    .btn-icon{
+        width: fit-content;
+        top: 1rem;
+        right: 1rem;
+        position: absolute;
+
+        background-color: $primary;
+        border-radius: 50%;
+    }
+}
+
+.card:hover{
+    border: $secondary solid 1px;
 }

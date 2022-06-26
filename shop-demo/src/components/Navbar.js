@@ -50,12 +50,12 @@ const Navbar = () => {
                 <div className="col-6 text-center">
                     <div className="input-group">
                         <input type="text" className="form-control" placeholder="Placeholder" aria-label="Placeholder" />
-                        <button className="btn btn-control-outline" type="button"><i class="bi bi-search"></i></button>
+                        <button className="btn btn-control-outline" type="button"><i className="bi bi-search"></i></button>
                     </div>
                 </div>
                 <div className="col-3 text-end">
                     <div className="btn-group">
-                        <button type="button" class="btn btn-no-back dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id='countryDropdown'>NL <i class="bi bi-chevron-down"></i></button>
+                        <button type="button" className="btn btn-no-back dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id='countryDropdown'>NL <i className="bi bi-chevron-down"></i></button>
                         <ul className="dropdown-menu">
                             <li className='dropdown-item' onClick={() => {changeSelectedCountry('NL')}}>NL</li>
                             <li className='dropdown-item' onClick={() => {changeSelectedCountry('ENG')}}>ENG</li>
@@ -63,8 +63,8 @@ const Navbar = () => {
                             <li className='dropdown-item' onClick={() => {changeSelectedCountry('SA')}}>SA</li>
                         </ul>
                     </div>
-                    <button type="button" class="btn btn-icon"><i class="bi bi-heart"></i></button>
-                    <button type="button" class="btn btn-secondary"><i class="bi bi-person"></i> Account</button>
+                    <button type="button" className="btn btn-icon"><i className="bi bi-heart"></i></button>
+                    <button type="button" className="btn btn-secondary"><i className="bi bi-person"></i> Account</button>
                 </div>
             </div>
 
@@ -72,7 +72,7 @@ const Navbar = () => {
             <div className="row px-3 pb-3">
                 <div className="col">
                     <div className="btn-group">
-                        <button type="button" class="btn btn-no-back dropdown-toggle fw-bold fs-5" data-bs-toggle="dropdown" aria-expanded="false" id='countryDropdown'>Browse by category <i class="bi bi-chevron-down"></i></button>
+                        <button type="button" className="btn btn-no-back dropdown-toggle fw-bold fs-5" data-bs-toggle="dropdown" aria-expanded="false" id='countryDropdown'>Browse by category <i className="bi bi-chevron-down"></i></button>
                         <ul className="dropdown-menu">
                             {storeObject.categories.map((category) => (
                                 <li className="dropdown-item" key={category.id}>{category.description}</li>
@@ -103,9 +103,8 @@ const Navbar = () => {
                     </div>
                     <div className="col-2">
                         <div className="p-2 bg-light fw-bold fs-5">
-                            <i class="bi bi-clock"></i> <span id='headerCountDown'></span>
+                            <i className="bi bi-clock"></i> <span id='headerCountDown'></span>
                         </div>
-                        
                     </div>
                 </div>
                 <div className="row">
@@ -116,7 +115,7 @@ const Navbar = () => {
                         <span className='align-middle'>Open auction</span>
                     </div>
                     <div className="col text-end">
-                        <button type="button" className="btn btn-no-back fw-bold">Auction Information <i class="bi bi-chevron-right"></i></button>
+                        <button type="button" className="btn btn-no-back fw-bold">Auction Information <i className="bi bi-chevron-right"></i></button>
                     </div>
                 </div>
             </div>
