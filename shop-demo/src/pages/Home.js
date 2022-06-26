@@ -159,9 +159,12 @@ const Home = () => {
                                         <span className='mb-0 align-bottom'>{vehicle.currentBids > 0 ? vehicle.currentBids + ' bids' : 'No bids'}</span>
                                     </div>
                                 </div>
-
-                                <Timer time={vehicle.timeLeft}/>
                                 
+                                {/* <Timer time={vehicle.timeLeft} /> */}
+
+                                <div className="bg-secondary fit-content-div">
+                                    <Timer time={vehicle.timeLeft} />
+                                </div>
                             </div>
                         </div>
                     </div>

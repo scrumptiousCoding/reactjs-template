@@ -1,11 +1,9 @@
 import logo from '../assets/dudLogo.png'
 import flag from '../assets/netherlands-flag.png'
 import storeObject from '../dataObjects/smallObject'
-import { useState } from 'react'
+import Timer from './Timer'
 
 const Navbar = () => {
-    var [timerValue, setTimerValue] = useState("00:00:00")
-
     var breadcrumb = [
         {page: 'start', active: false, id: 1},
         {page: 'Auction: Tractors Netherlands', active: true, id: 2}
@@ -14,22 +12,8 @@ const Navbar = () => {
         document.getElementById("countryDropdown").innerHTML = newCountry;
     }
 
-    var countDownDate = new Date()
-    countDownDate.setHours( countDownDate.getHours()+2 )
-
-    var x = setInterval(function() {
-        var now = new Date().getTime()
-        var distance = countDownDate - now
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000)
-
-        setTimerValue(hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0'))
-        if (distance < 0) {
-          clearInterval(x);
-          setTimerValue("00:00:00")
-        }
-      }, 1000);
+    var nextBidTime = new Date()
+    nextBidTime.setHours( nextBidTime.getHours()+2 )
 
     return (
         <div>
@@ -123,7 +107,7 @@ const Navbar = () => {
                     </div>
                     <div className="col-2 remove-on-sm">
                         <div className="p-2 bg-light fw-bold fs-5">
-                            <i className="bi bi-clock"></i> <span>{timerValue}</span>
+                            <Timer time={nextBidTime} />
                         </div>
                     </div>
                 </div>
@@ -135,8 +119,9 @@ const Navbar = () => {
                         <span className='align-middle'>Open auction</span>
                     </div>
                     <div className="col-12 d-md-none my-3">
-                        <div className="p-2 bg-light fw-bold fs-5 text-center">
-                            <i className="bi bi-clock"></i> <span>{timerValue}</span>
+                        
+                        <div className="p-2 bg-light fw-bold fs-5">
+                            <Timer time={nextBidTime} />
                         </div>
                     </div>
                     <div className="col-12 col-md text-center text-md-end">
