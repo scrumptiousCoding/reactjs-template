@@ -1,8 +1,11 @@
 import logo from '../assets/dudLogo.png'
 import flag from '../assets/netherlands-flag.png'
 import storeObject from '../dataObjects/smallObject'
+import { useState } from 'react'
 
 const Navbar = () => {
+    var [timerValue, setTimerValue] = useState("00:00:00")
+
     var breadcrumb = [
         {page: 'start', active: false, id: 1},
         {page: 'Auction: Tractors Netherlands', active: true, id: 2}
@@ -15,22 +18,23 @@ const Navbar = () => {
     countDownDate.setHours( countDownDate.getHours()+2 )
 
     var x = setInterval(function() {
-        var now = new Date().getTime();
-        var distance = countDownDate - now;
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var now = new Date().getTime()
+        var distance = countDownDate - now
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
-        document.getElementById("headerCountDown").innerHTML =  hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0');
+        setTimerValue(hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0'))
         if (distance < 0) {
           clearInterval(x);
-          document.getElementById("headerCountDown").innerHTML = "00:00:00";
+          setTimerValue("00:00:00")
         }
       }, 1000);
+
     return (
         <div>
             {/* Top banner */}
-            <div className="row justify-content-center secondary-background py-1">
+            <div className="row justify-content-center secondary-background py-1 d-none d-md-flex">
                 <div className="col-2">
                     <span className="smaller-text"><i className="bi bi-check-lg me-1"></i>Europe's largest auction house</span>
                 </div>
@@ -44,16 +48,10 @@ const Navbar = () => {
 
             {/* Logo banner */}
             <div className="row py-4 align-items-center ">
-                <div className="col-3">
+                <div className="col col-md-3 order-md-1">
                     <img src={logo} alt="" className='logo-image' />
                 </div>
-                <div className="col-6 text-center">
-                    <div className="input-group">
-                        <input type="text" className="form-control" placeholder="Placeholder" aria-label="Placeholder" />
-                        <button className="btn btn-control-outline" type="button"><i className="bi bi-search"></i></button>
-                    </div>
-                </div>
-                <div className="col-3 text-end">
+                <div className="col-3 text-end remove-on-sm order-md-3">
                     <div className="btn-group">
                         <button type="button" className="btn btn-no-back dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id='countryDropdown'>NL <i className="bi bi-chevron-down"></i></button>
                         <ul className="dropdown-menu">
@@ -66,10 +64,32 @@ const Navbar = () => {
                     <button type="button" className="btn btn-icon"><i className="bi bi-heart"></i></button>
                     <button type="button" className="btn btn-secondary"><i className="bi bi-person"></i> Account</button>
                 </div>
+                <div className="col text-end d-md-none order-md-3">
+                    <button type="button" className="btn btn-icon fs-5"><i className="bi bi-heart"></i></button>
+                    <button type="button" className="btn btn-icon fs-5"><i className="bi bi-person"></i></button>
+                    <button type="button" className="btn btn-icon fs-5" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" ><i className="bi bi-list"></i></button>
+                </div>
+
+                
+                <div className="col-12 mt-2 accordion-collapse collapse bg-secondary" id="collapseOne" >
+                    <ul className="list-group">
+                        <li className="list-group-item">Browse by Category</li>
+                        <li className="list-group-item">Autions</li>
+                        <li className="list-group-item">Help &amp; Contact</li>
+                    </ul>
+                </div>
+                
+                <div className="col-12 col-md-6 text-center order-md-2 mt-3 mt-remove-on-md">
+                    <div className="input-group">
+                        <input type="text" className="form-control" placeholder="What are you looking for..." aria-label="Placeholder" />
+                        <button className="btn btn-control-outline" type="button"><i className="bi bi-search"></i></button>
+                    </div>
+                </div>
             </div>
 
+
             {/* Menu banner */}
-            <div className="row px-3 pb-3">
+            <div className="row px-3 pb-3 d-none d-md-flex">
                 <div className="col">
                     <div className="btn-group">
                         <button type="button" className="btn btn-no-back dropdown-toggle fw-bold fs-5" data-bs-toggle="dropdown" aria-expanded="false" id='countryDropdown'>Browse by category <i className="bi bi-chevron-down"></i></button>
@@ -101,20 +121,25 @@ const Navbar = () => {
                     <div className="col">
                         <h3>Tractors Netherlands</h3>
                     </div>
-                    <div className="col-2">
+                    <div className="col-2 remove-on-sm">
                         <div className="p-2 bg-light fw-bold fs-5">
-                            <i className="bi bi-clock"></i> <span id='headerCountDown'></span>
+                            <i className="bi bi-clock"></i> <span>{timerValue}</span>
                         </div>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col">
+                    <div className="col-12 col-md">
                         <img src={flag} alt="" className='flag-image me-2 align-middle' />
                         <span className='me-3 align-middle'>Netherlands</span>
                         <span className='me-3 align-middle'>9 assets</span>
                         <span className='align-middle'>Open auction</span>
                     </div>
-                    <div className="col text-end">
+                    <div className="col-12 d-md-none my-3">
+                        <div className="p-2 bg-light fw-bold fs-5 text-center">
+                            <i className="bi bi-clock"></i> <span>{timerValue}</span>
+                        </div>
+                    </div>
+                    <div className="col-12 col-md text-center text-md-end">
                         <button type="button" className="btn btn-no-back fw-bold">Auction Information <i className="bi bi-chevron-right"></i></button>
                     </div>
                 </div>

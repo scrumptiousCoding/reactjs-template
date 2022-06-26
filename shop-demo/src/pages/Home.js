@@ -73,7 +73,7 @@ const Home = () => {
 
             {/* Filters and Sorting */}
             <div className="row my-3">
-                <div className="col">
+                <div className="col remove-on-sm">
                     <button type="button" className="btn btn-secondary-border dropdown-toggle me-2" data-bs-toggle="dropdown" aria-expanded="false">Category <i className="bi bi-chevron-down"></i></button>
                     <ul className="dropdown-menu">
                         {storeObject.categories.map((category) => (
@@ -106,7 +106,7 @@ const Home = () => {
                     </ul>
                     <button type="button" className="btn btn-secondary-border dropdown-toggle" aria-expanded="false" onClick={() => {setTractorsListing(tractors)}}>Alle Filters <i className="bi bi-chevron-down"></i></button>
                 </div>
-                <div className="col text-end">
+                <div className="col text-end remove-on-sm">
                     <span className='fw-bold me-2 align-middle'>{tractorsListing.length} results</span>
                     
                     <button type="button" className="btn btn-primary-border dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">{sortField}<i className="bi bi-chevron-down"></i></button>
@@ -115,6 +115,22 @@ const Home = () => {
                             <li className="dropdown-item" key={field.id} onClick={() => {sortData(field)}}>{field.description}</li>
                         ))}
                     </ul>
+                </div>
+                <div className="col-12 d-md-none mt-2">
+                    <button type="button" className="btn btn-secondary-border dropdown-toggle me-2 w-100 mb-2" data-bs-toggle="dropdown" aria-expanded="false">
+                        Filter <i className="bi bi-filter"></i>
+                    </button>
+                    <button type="button" className="btn btn-primary-border dropdown-toggle w-100 d-flex justify-content-between" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>{sortField}</span><i className="bi bi-chevron-down"></i>
+                    </button>
+                    <ul className="dropdown-menu">
+                        {sortingFields.map((field) => (
+                            <li className="dropdown-item" key={field.id} onClick={() => {sortData(field)}}>{field.description}</li>
+                        ))}
+                    </ul>
+
+                    <hr />
+                    <span className='fw-bold me-2 align-middle'>{tractorsListing.length} results</span>
                 </div>
             </div>
 
